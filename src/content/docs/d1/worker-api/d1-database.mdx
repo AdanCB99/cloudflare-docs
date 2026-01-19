@@ -36,9 +36,9 @@ Prepares a query statement to be later executed.
 
 <Tabs syncKey="workersExamples"> <TabItem label="JavaScript" icon="seti:javascript">
 ```js
-const someVariable = `Bs Beverages`;
+const someVariable = "Bs Beverages";
 const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-````
+```
 
 </TabItem> <TabItem label="Python" icon="seti:python">
 ```py
@@ -67,12 +67,14 @@ You can use the `bind` method to dynamically bind a value into the query stateme
   <Tabs syncKey="workersExamples">
   	{" "}
   	<TabItem label="JavaScript" icon="seti:javascript">
-  		```js const stmt = db .prepare("SELECT * FROM Customers WHERE CompanyName
-  		= Alfreds Futterkiste AND CustomerId = 1") ```
+  		```js
+  		const stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1");
+  		```
   	</TabItem>{" "}
   	<TabItem label="Python" icon="seti:python">
-  		```py stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName =
-  		Alfreds Futterkiste AND CustomerId = 1") ```
+  		```py
+  		stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
+  		```
   	</TabItem>{" "}
   </Tabs>
 
@@ -81,12 +83,15 @@ You can use the `bind` method to dynamically bind a value into the query stateme
   <Tabs syncKey="workersExamples">
   	{" "}
   	<TabItem label="JavaScript" icon="seti:javascript">
-  		```js const stmt = db .prepare("SELECT * FROM Customers WHERE CompanyName
-  		= ? AND CustomerId = ?") .bind("Alfreds Futterkiste", 1); ```
+  		```js
+  		const stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")
+  			.bind("Alfreds Futterkiste", 1);
+  		```
   	</TabItem>{" "}
   	<TabItem label="Python" icon="seti:python">
-  		```py stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND
-  		CustomerId = ?").bind("Alfreds Futterkiste", 1) ```
+  		```py
+  		stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?").bind("Alfreds Futterkiste", 1)
+  		```
   	</TabItem>{" "}
   </Tabs>
 
@@ -100,54 +105,72 @@ Batched statements are [SQL transactions](https://www.sqlite.org/lang_transactio
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 
-<Tabs syncKey="workersExamples"> <TabItem label="JavaScript" icon="seti:javascript">
+  <Tabs syncKey="workersExamples"> <TabItem label="JavaScript" icon="seti:javascript">
 ```js
-const companyName1 = `Bs Beverages`;
-const companyName2 = `Around the Horn`;
-const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
+const companyName1 = "Bs Beverages";
+const companyName2 = "Around the Horn";
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?");
 const batchResult = await env.DB.batch([
 	stmt.bind(companyName1),
 	stmt.bind(companyName2)
 ]);
+return Response.json(batchResult);
 ```
+</TabItem> <TabItem label="Python" icon="seti:python">
+```py
+from pyodide.ffi import to_js
+from workers import Response
+
+company_name1 = "Bs Beverages"
+company_name2 = "Around the Horn"
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")
+batch_result = await self.env.DB.batch(to_js([
+	stmt.bind(company_name1),
+	stmt.bind(company_name2)
+]))
+return Response.json(batch_result)
+```
+</TabItem> </Tabs>
 </TabItem> <TabItem label="Python" icon="seti:python">
 ```py
 from pyodide.ffi import to_js
 
 company_name1 = "Bs Beverages"
 company_name2 = "Around the Horn"
-stmt = self.env.DB.prepare("SELECT \* FROM Customers WHERE CompanyName = ?")
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")
 batch_result = await self.env.DB.batch(to_js([
-stmt.bind(company_name1),
-stmt.bind(company_name2)
+	stmt.bind(company_name1),
+	stmt.bind(company_name2)
 ]))
-
-````
+```
 </TabItem> </Tabs>
 
 #### Parameters
 
-- <code>statements</code>: <Type text="Array"/>
-  - An array of [`D1PreparedStatement`](#prepare)s.
+- <code>statements</code>: <Type text="Array" />- An array of
+  [`D1PreparedStatement`](#prepare)s.
 
 #### Return values
 
-- <code>results</code>: <Type text="Array"/>
-  - An array of `D1Result` objects containing the results of the [`D1Database::prepare`](#prepare) statements. Each object is in the array position corresponding to the array position of the initial [`D1Database::prepare`](#prepare) statement within the `statements`.
-  - Refer to [`D1Result`](/d1/worker-api/return-object/#d1result) for more information about this object.
+- <code>results</code>: <Type text="Array" />- An array of `D1Result` objects
+  containing the results of the [`D1Database::prepare`](#prepare) statements.
+  Each object is in the array position corresponding to the array position of
+  the initial [`D1Database::prepare`](#prepare) statement within the
+  `statements`. - Refer to [`D1Result`](/d1/worker-api/return-object/#d1result)
+  for more information about this object.
 
 <Details header="Example of return values" open={false}>
 
 <Tabs syncKey="workersExamples"> <TabItem label="JavaScript" icon="seti:javascript">
 ```js
-const companyName1 = `Bs Beverages`;
-const companyName2 = `Around the Horn`;
-const stmt = await env.DB.batch([
-	env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName1),
-	env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName2)
+const companyName1 = "Bs Beverages";
+const companyName2 = "Around the Horn";
+const batchResult = await env.DB.batch([
+	env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(companyName1),
+	env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(companyName2)
 ]);
-return Response.json(stmt)
-````
+return Response.json(batchResult);
+```
 
 </TabItem> <TabItem label="Python" icon="seti:python">
 ```py
@@ -156,13 +179,12 @@ from workers import Response
 
 company_name1 = "Bs Beverages"
 company_name2 = "Around the Horn"
-stmt = await self.env.DB.batch(to_js([
-self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name1),
-self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name2)
+batch_result = await self.env.DB.batch(to_js([
+	self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name1),
+	self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name2)
 ]))
-return Response.json(stmt)
-
-````
+return Response.json(batch_result)
+```
 </TabItem> </Tabs>
 
 ```json output
@@ -213,7 +235,7 @@ return Response.json(stmt)
     ]
   }
 ]
-````
+```
 
 <Tabs syncKey="workersExamples">
 	{" "}
@@ -242,33 +264,35 @@ return Response.json(stmt)
 - You can construct batches reusing the same prepared statement:
 
   <Tabs syncKey="workersExamples"> <TabItem label="JavaScript" icon="seti:javascript">
+
 ```js
 const companyName1 = `Bs Beverages`;
 const companyName2 = `Around the Horn`;
 const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
 const batchResult = await env.DB.batch([
 	stmt.bind(companyName1),
-	stmt.bind(companyName2)
+	stmt.bind(companyName2),
 ]);
 return Response.json(batchResult);
 ```
+
 </TabItem> <TabItem label="Python" icon="seti:python">
 ```py
 from pyodide.ffi import to_js
 from workers import Response
 
-  company_name1 = "Bs Beverages"
-  company_name2 = "Around the Horn"
-  stmt = self.env.DB.prepare("SELECT \* FROM Customers WHERE CompanyName = ?")
-  batch_result = await self.env.DB.batch(to_js([
-  stmt.bind(company_name1),
-  stmt.bind(company_name2)
-  ]))
-  return Response.json(batch_result)
+company_name1 = "Bs Beverages"
+company_name2 = "Around the Horn"
+stmt = self.env.DB.prepare("SELECT \* FROM Customers WHERE CompanyName = ?")
+batch_result = await self.env.DB.batch(to_js([
+stmt.bind(company_name1),
+stmt.bind(company_name2)
+]))
+return Response.json(batch_result)
 
-  ```
-  </TabItem> </Tabs>
-  ```
+```
+</TabItem> </Tabs>
+```
 
 ### `exec()`
 
@@ -277,8 +301,8 @@ Executes one or more queries directly without prepared statements or parameter b
 <Tabs syncKey="workersExamples">
 	{" "}
 	<TabItem label="JavaScript" icon="seti:javascript">
-		```js const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE
-		CompanyName = "Bs Beverages"`); ```
+		```js const returnValue = await env.DB.exec('SELECT * FROM Customers WHERE
+		CompanyName = "Bs Beverages"'); ```
 	</TabItem>{" "}
 	<TabItem label="Python" icon="seti:python">
 		```py return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE
@@ -303,7 +327,7 @@ Executes one or more queries directly without prepared statements or parameter b
 
 <Tabs syncKey="workersExamples"> <TabItem label="JavaScript" icon="seti:javascript">
 ```js
-const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
+const returnValue = await env.DB.exec('SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"');
 return Response.json(returnValue);
 ```
 </TabItem> <TabItem label="Python" icon="seti:python">
@@ -314,14 +338,15 @@ return_value = await self.env.DB.exec('SELECT \* FROM Customers WHERE CompanyNam
 return Response.json(return_value)
 
 ````
+
 </TabItem> </Tabs>
 
 ```json output
 {
-  "count": 1,
-  "duration": 1
+	"count": 1,
+	"duration": 1
 }
-````
+```
 
 </Details>
 
@@ -374,12 +399,12 @@ Starts a D1 session which maintains sequential consistency among queries execute
 
 <Tabs syncKey="workersExamples"> <TabItem label="JavaScript" icon="seti:javascript">
 ```js
-const session = env.DB.withSession("<parameter>");
+const session = env.DB.withSession("first-primary");
 ````
 
 </TabItem> <TabItem label="Python" icon="seti:python">
 ```py
-session = self.env.DB.withSession("<parameter>")
+session = self.env.DB.withSession("first-primary")
 ```
 </TabItem> </Tabs>
 
@@ -463,4 +488,8 @@ This method is equivalent to [`D1Database::prepare`](/d1/worker-api/d1-database/
 ### `batch()`
 
 This method is equivalent to [`D1Database::batch`](/d1/worker-api/d1-database/#batch).
+```
+
+```
+
 ```
