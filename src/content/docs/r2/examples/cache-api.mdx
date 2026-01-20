@@ -14,6 +14,14 @@ You will need to [connect a custom domain](/workers/configuration/routing/custom
 
 :::
 
+This example requires an R2 bucket binding in your `wrangler.toml`:
+
+```toml
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "my-bucket"
+```
+
 ```js
 
 export default {
@@ -48,6 +56,7 @@ export default {
 
       // Set the appropriate object headers
       const headers = new Headers();
+      // Copy R2 object metadata (content-type, cache-control, etc.) to response headers
       object.writeHttpMetadata(headers);
       headers.set('etag', object.httpEtag);
 
@@ -67,7 +76,7 @@ export default {
 
       return response;
     } catch (e) {
-      return new Response('Error thrown ' + e.message);
+      return new Response(`Error thrown ${e.message}`);
     }
   },
 };
