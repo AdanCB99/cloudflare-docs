@@ -25,7 +25,7 @@ Clientless Web Isolation allows users to securely browse high risk or sensitive 
 
 8. At the bottom of the page, select **Save**.
 
-Your application will now be served in an isolated browser for users matching your policies.
+Cloudflare now serves your application in an isolated browser for users who match your policies.
 
 ### Open links in Browser Isolation
 
@@ -51,7 +51,7 @@ https://<your-team-name>.cloudflareaccess.com/browser/<URL>
 
 For example, to isolate `www.example.com`, users would visit `https://<your-team-name>.cloudflareaccess.com/browser/https://www.example.com/` in their preferred browser.
 
-If `<url>` is not provided, users are presented with a Cloudflare Zero Trust landing page where they can input a target URL or search for a website.
+If you do not provide `<url>`, Cloudflare shows users a Cloudflare Zero Trust landing page where they can input a target URL or search for a website.
 
 ## Optional configurations
 
@@ -129,8 +129,8 @@ To turn on or off the address bar, users can right-click on any isolated page an
 ## Logs
 
 - **Authentication events**: User login events are available in [Access authentication logs](/cloudflare-one/insights/logs/audit-logs/).
-- **HTTP requests**: Traffic from the remote browser to the Internet is logged in [Gateway activity logs](/cloudflare-one/insights/logs/gateway-logs/).
-- **DNS queries**: DNS queries from the remote browser are shown in [Gateway activity logs](/cloudflare-one/insights/logs/gateway-logs/).
+- **HTTP requests**: [Gateway activity logs](/cloudflare-one/insights/logs/gateway-logs/) record traffic from the remote browser to the Internet.
+- **DNS queries**: [Gateway activity logs](/cloudflare-one/insights/logs/gateway-logs/) record DNS queries from the remote browser.
 - **User actions**: Track copy/paste, download/upload, and print actions initiated by users in the remote browser (only available in [Logpush](/cloudflare-one/insights/logs/logpush/)).
 
 ## Redirect traffic to the remote browser

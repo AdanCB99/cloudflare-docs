@@ -14,7 +14,7 @@ Below, you will find information regarding the current limitations for Browser I
 
 ## Website compatibility
 
-Our Network Vector Rendering (NVR) technology allows us to deliver a secure remote computing experience without the bandwidth limitations of video streams. While we expect most websites to work perfectly, some browser features and web technologies are unsupported and will be implemented in the future:
+Our Network Vector Rendering (NVR) technology allows us to deliver a secure remote computing experience without the bandwidth limitations of video streams. While we expect most websites to work perfectly, Browser Isolation does not support some browser features and web technologies yet, but we plan to implement them in the future:
 
 - Webcam and microphone support is unavailable.
 - Websites that use WebGL may not function. To turn off WebGL in the browser, refer to [WebGL Rendering Error](/cloudflare-one/faq/troubleshooting/#i-see-webgl-rendering-error).
@@ -58,7 +58,7 @@ Certain selectors for Gateway HTTP policies bypass Browser Isolation, including:
 - [Destination Country IP Geolocation](/cloudflare-one/traffic-policies/http-policies/#destination-country)
 - [Destination IP](/cloudflare-one/traffic-policies/http-policies/#destination-ip)
 
-You cannot use these selectors to isolate traffic and isolation matches for these selectors will not appear in your Gateway logs. Additionally, you cannot apply other policies based on these selectors while in isolation. For example, if you have a Block policy that matches traffic based on destination IP, Gateway will not block the matching traffic if it is already isolated by an Isolate policy.
+You cannot use these selectors to isolate traffic, and isolation matches for these selectors will not appear in your Gateway logs. Additionally, you cannot apply other policies based on these selectors while in isolation. For example, if you have a Block policy that matches traffic based on destination IP, Gateway will not block the matching traffic if an Isolate policy already isolated it.
 
 ## File download size
 

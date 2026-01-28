@@ -10,7 +10,7 @@ If your organization uses a firewall or other policies to restrict Internet traf
 
 ## Remoting client
 
-Isolated pages are served by the remoting client. This client communicates to Cloudflare's network via HTTPS and WebRTC.
+The remoting client serves isolated pages. This client communicates to Cloudflare's network via HTTPS and WebRTC.
 
 ### Remoting Client (Services)
 
@@ -28,7 +28,7 @@ Users connecting through Clientless Web Isolation also require connectivity to C
 
 Browser Isolation uses WebRTC for low-latency communication between the local browser and the remote browser.
 
-In order to pass WebRTC traffic, the remoting client must be able to connect to the following IP addresses:
+To pass WebRTC traffic, the remoting client must be able to connect to the following IP addresses:
 
 | IP range                                                                 | Port range    | Protocol |
 | ------------------------------------------------------------------------ | ------------- | -------- |

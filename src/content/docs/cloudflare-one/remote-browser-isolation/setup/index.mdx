@@ -6,7 +6,7 @@ sidebar:
   label: Get started
 ---
 
-Browser Isolation is enabled through [Secure Web Gateway HTTP policies](/cloudflare-one/traffic-policies/http-policies/). By default, no traffic is isolated until you have added an Isolate policy to your HTTP policies.
+Enable Browser Isolation through [Secure Web Gateway HTTP policies](/cloudflare-one/traffic-policies/http-policies/). By default, Browser Isolation does not isolate traffic until you add an Isolate policy to your HTTP policies.
 
 ## 1. Connect devices to Cloudflare
 
@@ -35,7 +35,7 @@ Next, [verify that your policy is working](#3-check-if-a-web-page-is-isolated).
 
 ## 3. Check if a web page is isolated
 
-Users can see if a webpage is isolated by using one of the following methods:
+Users can check whether Browser Isolation is isolating a web page by using one of the following methods:
 
 - Select the padlock in the address bar and check for the presence of a Cloudflare Root CA.
 - Right-click the web page and view the context menu options.
@@ -63,4 +63,4 @@ Users can see if a webpage is isolated by using one of the following methods:
 #### Disconnect Browser Isolation
 
 WARP users can temporarily disable remote browsing by [disconnecting the WARP client](/cloudflare-one/team-and-resources/devices/warp/configure-warp/warp-settings/#lock-warp-switch).
-Once WARP is disconnected, a refresh will return the non-isolated page.
+After you disconnect WARP, refresh the page to return the non-isolated page.
