@@ -17,7 +17,7 @@ The following steps are identical to [Connect user devices](/learning-paths/repl
 
 The most common way to protect and filter your end-user traffic is by using a device client. The standard Cloudflare device client supports a number of operating systems and deployment methodologies, but there can still be scenarios in which an alternative path makes sense.
 
-### Zero Trust Client
+### WARP client
 
 Cloudflare WARP is the most common onramp to send user traffic to Gateway. It is a lightweight device client, which builds proxy tunnels using either Wireguard or MASQUE, and builds a DNS proxy using DNS-over-HTTPS. It supports all major operating systems, supports all common forms of endpoint management tooling, and has a robust series of management parameters and profiles to accurately scope the needs of a diverse user base. It has flexible operating modes and can control device traffic as a proxy, control device DNS traffic as a DNS proxy, or both. It is the most common method to send traffic from user devices to be filtered and decrypted by Cloudflare Gateway.
 
@@ -50,7 +50,7 @@ Only available on Enterprise plans.
 
 Magic WAN on-ramps traffic via your connections and can send all network and HTTP traffic through Cloudflare Gateway for inspection.
 
-For more information on how Magic WAN integrates with Zero Trust, refer to [Zero Trust integration](/magic-wan/zero-trust/).
+For more information on how Magic WAN integrates with Cloudflare One, refer to [Cloudflare One integration](/magic-wan/zero-trust/).
 
 ### WARP Connector <Badge text="Beta" variant="caution" size="small" />
 

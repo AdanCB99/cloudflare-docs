@@ -7,7 +7,7 @@ sidebar:
 
 import { Render, TabItem, Tabs, APIRequest } from "~/components";
 
-In order to use Data Loss Prevention (DLP) tools within Cloudflare Zero Trust, you first need to define your DLP profiles. [DLP profiles](/cloudflare-one/data-loss-prevention/dlp-profiles/) are complex objects with dictionaries, pre-built detections, and custom logic that you can reference as selectors within your Gateway policies.
+In order to use Data Loss Prevention (DLP) tools within Cloudflare One, you first need to define your DLP profiles. [DLP profiles](/cloudflare-one/data-loss-prevention/dlp-profiles/) are complex objects with dictionaries, pre-built detections, and custom logic that you can reference as selectors within your Gateway policies.
 
 ## Configure a DLP profile
 
@@ -26,7 +26,7 @@ You may either use DLP profiles predefined by Cloudflare, or create your own cus
 
 ## Build effective DLP profiles
 
-For many Cloudflare users, Zero Trust is often one of the only measures for preventing the loss of sensitive data. For other users, Zero Trust may be the one of the early in-line measures of a complex Internet and SaaS app security strategy. No matter which model you most resemble, developing effective and appropriate DLP policies and practices starts with first-principles definitions.
+For many Cloudflare users, Cloudflare One is often one of the only measures for preventing the loss of sensitive data. For other users, Cloudflare One may be the one of the early in-line measures of a complex Internet and SaaS app security strategy. No matter which model you most resemble, developing effective and appropriate DLP policies and practices starts with first-principles definitions.
 
 ### Define your sensitive data
 
@@ -123,11 +123,11 @@ If your data is a distinct [dataset](/cloudflare-one/data-loss-prevention/detect
 
 We recommend using Exact Data Match for highly sensitive datasets and Custom Wordlists for lists of keywords.
 
-As your datasets change and grow, we recommend building a pipeline to update the data source in Cloudflare Zero Trust. For more information, contact your account team.
+As your datasets change and grow, we recommend building a pipeline to update the data source in Cloudflare One. For more information, contact your account team.
 
 #### Microsoft Information Protection (MIP) labels
 
-If your data already contains Microsoft Information Protection (MIP) labeling schema, Cloudflare can detect those values in-transit automatically. To get started, connect your Microsoft 365 account with a [CASB integration](/cloudflare-one/integrations/cloud-and-saas/microsoft-365/). Cloudflare will automatically pull in your existing MIP definitions into Zero Trust. You can then use the MIP definitions to build DLP profiles for use in Gateway policies.
+If your data already contains Microsoft Information Protection (MIP) labeling schema, Cloudflare can detect those values in-transit automatically. To get started, connect your Microsoft 365 account with a [CASB integration](/cloudflare-one/integrations/cloud-and-saas/microsoft-365/). Cloudflare will automatically pull in your existing MIP definitions into Cloudflre One. You can then use the MIP definitions to build DLP profiles for use in Gateway policies.
 
 For more information, refer to [Integration profiles](/cloudflare-one/data-loss-prevention/dlp-profiles/integration-profiles/).
 

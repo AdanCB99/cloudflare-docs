@@ -43,7 +43,7 @@ entries:
 
   - term: Cloudflare DEX
     general_definition: |-
-      Cloudflare Digital Experience Monitoring (DEX) provides visibility into device, network, and application performance across your Zero Trust Organization.
+      Cloudflare Digital Experience Monitoring (DEX) provides visibility into device, network, and application performance across your Zero Trust organization.
 
   - term: Cloudflare Gateway
     general_definition: |-
@@ -60,10 +60,6 @@ entries:
   - term: Cloudflare Tunnel
     general_definition: |-
       Cloudflare Tunnel uses software agents (`cloudflared` or WARP Connector) to establish a secure connection between a private network and Cloudflare.
-
-  - term: Cloudflare Zero Trust
-    general_definition: |-
-      Cloudflare Zero Trust provides the power of Cloudflare's global network to your internal teams and infrastructure. It empowers users with secure, fast, and seamless access to any device on the Internet.
 
   - term: daemon
     general_definition: |-
