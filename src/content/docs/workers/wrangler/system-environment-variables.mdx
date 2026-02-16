@@ -90,6 +90,13 @@ Wrangler supports the following environment variables:
 
 * `WRANGLER_R2_SQL_AUTH_TOKEN` <Type text="string" /> <MetaInfo text="optional" />
   - API token used for executing queries with [R2 SQL](/r2-sql).
+
+- `WRANGLER_CACHE_DIR` <Type text="string" /> <MetaInfo text="optional" />
+  - Custom directory for Wrangler's cache files. When set, this overrides the default cache location (`node_modules/.cache/wrangler`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
+
+- `MINIFLARE_CACHE_DIR` <Type text="string" /> <MetaInfo text="optional" />
+  - Custom directory for Miniflare's `cf.json` cache file, used during local development with `wrangler dev`. When set, this overrides the default cache location (`node_modules/.mf`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
+
 ## Example `.env` file
 
 The following is an example `.env` file:
