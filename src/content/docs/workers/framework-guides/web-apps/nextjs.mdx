@@ -38,23 +38,23 @@ You can deploy your Next.js app to Cloudflare Workers using the OpenNext adapter
 
 Most Next.js features are supported by the Cloudflare OpenNext adapter:
 
-| Feature                               | Cloudflare adapter   | Notes                                                                        |
-| ------------------------------------- | -------------------- | ---------------------------------------------------------------------------- |
-| App Router                            | 🟢 supported         |                                                                              |
-| Pages Router                          | 🟢 supported         |                                                                              |
-| Route Handlers                        | 🟢 supported         |                                                                              |
-| React Server Components               | 🟢 supported         |                                                                              |
-| Static Site Generation (SSG)          | 🟢 supported         |                                                                              |
-| Server-Side Rendering (SSR)           | 🟢 supported         |                                                                              |
-| Incremental Static Regeneration (ISR) | 🟢 supported         |                                                                              |
-| Server Actions                        | 🟢 supported         |                                                                              |
-| Response streaming                    | 🟢 supported         |                                                                              |
-| asynchronous work with `next/after`   | 🟢 supported         |                                                                              |
-| Middleware                            | 🟢 supported         |                                                                              |
-| Image optimization                    | 🟢 supported         | Supported via [Cloudflare Images](/images/) |
-| Partial Prerendering (PPR)            | 🟢 supported         | PPR is experimental in Next.js                                               |
-| Composable Caching ('use cache')      | 🟢 supported         | Composable Caching is experimental in Next.js                                |
-| Node.js in Middleware                 | ⚪ not yet supported | Node.js middleware introduced in 15.2 are not yet supported                  |
+| Feature                               | Cloudflare adapter   | Notes                                                       |
+| ------------------------------------- | -------------------- | ----------------------------------------------------------- |
+| App Router                            | 🟢 supported         |                                                             |
+| Pages Router                          | 🟢 supported         |                                                             |
+| Route Handlers                        | 🟢 supported         |                                                             |
+| React Server Components               | 🟢 supported         |                                                             |
+| Static Site Generation (SSG)          | 🟢 supported         |                                                             |
+| Server-Side Rendering (SSR)           | 🟢 supported         |                                                             |
+| Incremental Static Regeneration (ISR) | 🟢 supported         |                                                             |
+| Server Actions                        | 🟢 supported         |                                                             |
+| Response streaming                    | 🟢 supported         |                                                             |
+| asynchronous work with `next/after`   | 🟢 supported         |                                                             |
+| Middleware                            | 🟢 supported         |                                                             |
+| Image optimization                    | 🟢 supported         | Supported via [Cloudflare Images](/images/)                 |
+| Partial Prerendering (PPR)            | 🟢 supported         | PPR is experimental in Next.js                              |
+| Composable Caching ('use cache')      | 🟢 supported         | Composable Caching is experimental in Next.js               |
+| Node.js in Middleware                 | ⚪ not yet supported | Node.js middleware introduced in 15.2 are not yet supported |
 
 ## Deploy a new Next.js project on Workers
 
@@ -102,15 +102,13 @@ Most Next.js features are supported by the Cloudflare OpenNext adapter:
 
    <PackageManagers type="run" args="deploy" />
 
-    :::note
-    [**Workers Builds**](/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section. 
+   :::note
+   [**Workers Builds**](/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section.
 
+   This ensures the Next build has the necessary access to both public `NEXT_PUBLC...` variables and [non-`NEXT_PUBLIC_...`](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.
 
-    This ensures the Next build has the necessary access to both public `NEXT_PUBLC...` variables and [non-`NEXT_PUBLIC_...`](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.
-
-
-    Learn more in the [OpenNext environment variable guide](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
-    :::
+   Learn more in the [OpenNext environment variable guide](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
+   :::
 
 </Steps>
 
@@ -170,22 +168,27 @@ You can convert an existing Next.js application to run on Cloudflare
 
 5.  **Update `package.json`**
 
-    You can add the following scripts to your `package.json`:
+    Add or update the following scripts in your `package.json`:
 
     ```json
+    "build": "next build",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
     ```
 
+    :::caution[Avoid infinite build loops]
+    Do not set your `build` script to `opennextjs-cloudflare build`. The `opennextjs-cloudflare build` command internally runs `npm run build`, so this creates an infinite loop and causes your build to fail. For most projects, `next build` is the correct value.
+    :::
+
     <Details header="Usage">
-    	- `preview`: Builds your app and serves it locally, allowing you to
-    	quickly preview your app running locally in the Workers runtime, via a
-    	single command.
-		- `deploy`: Builds your app, and then deploys it to
-    	Cloudflare
-		- `cf-typegen`: Generates a `cloudflare-env.d.ts` file at the
-    	root of your project containing the types for the env.
+    	- `build`: Runs the Next.js build process. This is called internally by
+    	`opennextjs-cloudflare build`. - `preview`: Builds your app and serves it
+    	locally, allowing you to quickly preview your app running locally in the
+    	Workers runtime, via a single command. - `deploy`: Builds your app, and
+    	then deploys it to Cloudflare - `cf-typegen`: Generates a
+    	`cloudflare-env.d.ts` file at the root of your project containing the
+    	types for the env.
     </Details>
 
 6.  **Develop locally.**
@@ -209,14 +212,11 @@ You can convert an existing Next.js application to run on Cloudflare
     <PackageManagers type="run" args="deploy" />
 
     :::note
-    [**Workers Builds**](/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section. 
-
+    [**Workers Builds**](/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section.
 
     This ensures the Next build has the necessary access to both public `NEXT_PUBLC...` variables and [non-`NEXT_PUBLIC_...`](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.
 
-
     Learn more in the [OpenNext environment variable guide](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
     :::
-
 
 </Steps>
