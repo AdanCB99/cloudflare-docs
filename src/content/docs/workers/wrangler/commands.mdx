@@ -48,6 +48,7 @@ Wrangler offers a number of commands to manage your Cloudflare Workers.
 - [`pages`](#pages) - Configure Cloudflare Pages.
 - [`pipelines`](#pipelines) - Configure Cloudflare Pipelines.
 - [`queues`](#queues) - Configure Workers Queues.
+- [`tunnel`](#tunnel) - Manage Cloudflare Tunnels.
 - [`login`](#login) - Authorize Wrangler with your Cloudflare account using OAuth.
 - [`logout`](#logout) - Remove Wrangler's authorization for accessing your account.
 - [`auth token`](#auth-token) - Retrieve your current authentication token or credentials.
@@ -626,6 +627,14 @@ Manage your [Pipelines](/pipelines/).
 Manage your Workers [Queues](/queues/) configurations.
 
 <WranglerNamespace namespace="queues" headingLevel={3} />
+
+---
+
+## `tunnel`
+
+Manage [Cloudflare Tunnels](/cloudflare-one/networks/connectors/cloudflare-tunnel/) directly from Wrangler. Create, run, and manage tunnels that securely connect your local services to Cloudflare's network — no public IPs required.
+
+<Render file="wrangler-commands/tunnel" product="workers" />
 
 ---
 
