@@ -45,8 +45,8 @@ Created tunnel.
 ID: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
 Name: my-app
 
-To run this tunnel:
-   wrangler tunnel run f70ff985-a4ef-4643-bbbc-4a0ed4fc8415 --url http://localhost:3000
+To run this tunnel, configure its ingress rules in the Cloudflare dashboard, then run:
+   wrangler tunnel run f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
 ```
 
 <Render file="wrangler-commands/global-flags" product="workers" />
@@ -152,23 +152,23 @@ wrangler tunnel run [TUNNEL] [OPTIONS]
   - The name or UUID of the tunnel to run. Required unless `--token` is provided.
 - `--token` <Type text="string" /> <MetaInfo text="optional" />
   - A tunnel token to use directly. Skips API authentication.
-- `--url` <Type text="string" /> <MetaInfo text="optional" />
-  - The local URL to expose through the tunnel (for example, `http://localhost:3000`).
 - `--log-level` <Type text="string" /> <MetaInfo text="(default: info) optional" />
   - Log level for `cloudflared`. Does not affect Wrangler logs (controlled by `WRANGLER_LOG`). One of: `debug`, `info`, `warn`, `error`, `fatal`.
+
+Named tunnels are **remotely managed** — configure ingress rules (which local services to expose) in the [Cloudflare dashboard](https://one.dash.cloudflare.com/) or via the API before running the tunnel.
 
 There are two ways to run a tunnel:
 
 **By tunnel name or ID** (fetches the token via the API):
 
 ```sh
-npx wrangler tunnel run my-app --url http://localhost:3000
+npx wrangler tunnel run my-app
 ```
 
 **By token** (no API authentication needed — useful for CI/CD or remote servers):
 
 ```sh
-npx wrangler tunnel run --token eyJhIjoiNGE2MjY... --url http://localhost:3000
+npx wrangler tunnel run --token eyJhIjoiNGE2MjY...
 ```
 
 :::note
