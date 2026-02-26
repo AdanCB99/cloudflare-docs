@@ -10,7 +10,7 @@ All `wrangler tunnel` commands are **experimental** and may change without notic
 
 :::
 
-Wrangler manages the [cloudflared](/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) binary automatically. On first use, Wrangler will prompt you to download cloudflared to a local cache directory. You can skip this by installing cloudflared yourself and adding it to your `PATH`, or by setting the `WRANGLER_CLOUDFLARED_PATH` environment variable to point to an existing binary.
+Wrangler manages the [cloudflared](/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) binary automatically. On first use, Wrangler will prompt you to download `cloudflared` to a local cache directory. You can skip this by installing `cloudflared` yourself and adding it to your `PATH`, or by setting the `WRANGLER_CLOUDFLARED_PATH` environment variable to point to an existing binary.
 
 :::note
 
@@ -155,7 +155,7 @@ wrangler tunnel run [TUNNEL] [OPTIONS]
 - `--url` <Type text="string" /> <MetaInfo text="optional" />
   - The local URL to expose through the tunnel (for example, `http://localhost:3000`).
 - `--log-level` <Type text="string" /> <MetaInfo text="(default: info) optional" />
-  - Log level for cloudflared. Does not affect Wrangler logs (controlled by `WRANGLER_LOG`). One of: `debug`, `info`, `warn`, `error`, `fatal`.
+  - Log level for `cloudflared`. Does not affect Wrangler logs (controlled by `WRANGLER_LOG`). One of: `debug`, `info`, `warn`, `error`, `fatal`.
 
 There are two ways to run a tunnel:
 
@@ -173,11 +173,11 @@ npx wrangler tunnel run --token eyJhIjoiNGE2MjY... --url http://localhost:3000
 
 :::note
 
-The tunnel token is passed to cloudflared via the `TUNNEL_TOKEN` environment variable rather than CLI arguments, preventing it from appearing in process listings.
+The tunnel token is passed to `cloudflared` via the `TUNNEL_TOKEN` environment variable rather than CLI arguments, preventing it from appearing in process listings.
 
 :::
 
-Press `Ctrl+C` to stop the tunnel. Wrangler will send a graceful shutdown signal to cloudflared before exiting.
+Press `Ctrl+C` to stop the tunnel. Wrangler will send a graceful shutdown signal to `cloudflared` before exiting.
 
 <Render file="wrangler-commands/global-flags" product="workers" />
 
