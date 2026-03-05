@@ -1,0 +1,15 @@
+---
+title: Realtime metrics and custom notifications now available for Cloudflare Queues
+description: Realtime metrics and custom notifications now available for Cloudflare Queues
+products:
+  - queues
+date: 2026-03-15
+---
+
+Previously, Cloudflare Queues backlog metrics included averabe backlog size (in bytes & number of messages) and average consumer lag time.
+
+Now, you can access your backlog metrics in realtime:
+
+- with GraphQL via `backlog_size`, `backlog_count`, and `backlog_lag_ms`.
+- via the [Queues REST API](/api/resources/queues/methods/create/) through `env.QUEUE.getMetrics()`
+- [in the dashboard](dash.cloudflare.com/?to=/:account/workers/queues/) by naviating into the **Metrics** tab of your queue
