@@ -3,6 +3,10 @@ link: "/ai-search/platform/release-note/"
 productName: AI Search
 productLink: "/ai-search/"
 entries:
+  - publish_date: "2026-03-06"
+    title: New AI Search Workers binding
+    description: |-
+      The new `env.AI.aiSearch()` binding provides a cleaner API for AI Search operations with account-level and instance-level methods. Requires `@cloudflare/workers-types` version 4.20260304.0 or later for TypeScript types and `wrangler` version 4.68.1 or later for local development. The previous `env.AI.autorag()` binding continues to work.
   - publish_date: "2026-02-09"
     title: Crawler user agent renamed
     description: |-
