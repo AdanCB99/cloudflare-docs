@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página 2 - Mi Finca</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Finca - Página 2</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Página 1</a>
+        <a href="pagina2.html">Página 2</a>
+        <a href="pagina3.html">Página 3</a>
+        <a href="pagina4.html">Página 4</a>
+    </nav>
+
+    <main>
+        <p>Texto 1: Ofrecemos talleres de jardinería.</p>
+        <p>Texto 2: Contamos con un invernadero de plantas exóticas.</p>
+        <p>Texto 3: Tenemos animales de granja para la visita de niños.</p>
+        <p>Texto 4: Participamos en ferias locales de productos orgánicos.</p>
+        <p>Texto 5: Organizamos eventos educativos sobre agricultura.</p>
+        <p>Texto 6: Ofrecemos catas de productos frescos.</p>
+        <p>Texto 7: Nos preocupamos por el bienestar del medio ambiente.</p>
+    </main>
+</body>
+</html>

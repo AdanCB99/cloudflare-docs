@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página 3 - Mi Finca</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Finca - Página 3</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Página 1</a>
+        <a href="pagina2.html">Página 2</a>
+        <a href="pagina3.html">Página 3</a>
+        <a href="pagina4.html">Página 4</a>
+    </nav>
+
+    <main>
+        <p>Texto 1: Contamos con visitas guiadas por la mañana.</p>
+        <p>Texto 2: Ofrecemos alojamiento rural en cabañas.</p>
+        <p>Texto 3: Se pueden realizar actividades de recolección de frutas.</p>
+        <p>Texto 4: Tenemos senderos naturales para caminatas.</p>
+        <p>Texto 5: Organizamos talleres de cocina con productos frescos.</p>
+        <p>Texto 6: Promovemos la agricultura ecológica y sostenible.</p>
+        <p>Texto 7: Participamos en programas de voluntariado ambiental.</p>
+    </main>
+</body>
+</html>

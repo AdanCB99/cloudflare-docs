@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página 1 - Mi Finca</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Finca - Página 1</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Página 1</a>
+        <a href="pagina2.html">Página 2</a>
+        <a href="pagina3.html">Página 3</a>
+        <a href="pagina4.html">Página 4</a>
+    </nav>
+
+    <main>
+        <p>Texto 1: Bienvenido a nuestra finca.</p>
+        <p>Texto 2: Aquí cultivamos productos frescos y naturales.</p>
+        <p>Texto 3: Contamos con visitas guiadas y actividades rurales.</p>
+        <p>Texto 4: Nuestra finca tiene más de 20 hectáreas de terreno.</p>
+        <p>Texto 5: Puedes comprar productos directamente en nuestra tienda.</p>
+        <p>Texto 6: Contamos con un huerto urbano para educación ambiental.</p>
+        <p>Texto 7: Nuestro objetivo es promover la sostenibilidad.</p>
+    </main>
+</body>
+</html>

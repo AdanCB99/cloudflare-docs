@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página 4 - Mi Finca</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Finca - Página 4</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Página 1</a>
+        <a href="pagina2.html">Página 2</a>
+        <a href="pagina3.html">Página 3</a>
+        <a href="pagina4.html">Página 4</a>
+    </nav>
+
+    <main>
+        <p>Texto 1: Nuestro horario de atención es de 8:00 a 18:00.</p>
+        <p>Texto 2: Contamos con estacionamiento gratuito.</p>
+        <p>Texto 3: Tenemos señalización clara en toda la finca.</p>
+        <p>Texto 4: Ofrecemos degustaciones de productos frescos.</p>
+        <p>Texto 5: Se pueden reservar visitas educativas para colegios.</p>
+        <p>Texto 6: Tenemos un espacio de picnic para familias.</p>
+        <p>Texto 7: Nuestro objetivo es educar sobre agricultura sostenible.</p>
+    </main>
+</body>
+</html>
